@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Client.master.cs" Inherits="FSC.Client.Client" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - FSC Builder</title>
+    <link href="/Resources/bootstrap.css" rel="stylesheet">
+    <link href="/Resources/Site.css" rel="stylesheet">
+    <asp:PlaceHolder runat="server">
+    </asp:PlaceHolder>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <script src="/Resources/modernizr-2.8.3.js" type="text/javascript"></script>
+    <script src="/Resources/jquery-3.3.1.js" type="text/javascript"></script>
+    <script src="/Resources/bootstrap.js" type="text/javascript"></script>
+    <script src="/Resources/WebFormsJs.js" type="text/javascript"></script>
+    <form runat="server">
+        
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/Client/Default.aspx"><%=S["Client.Description"] %></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <%if (IsAuthenticated()){ %>
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="/Client/Default.aspx">Home</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">People<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="/Client/Administrator.aspx">Administrators</a></li>
+                                <li><a runat="server" href="/Client/Employee.aspx">Employees</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Individual sessions<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="/Client/Module.aspx?content=system">System content</a></li>
+                                <li><a runat="server" href="/Client/Module.aspx?content=local">Local content</a></li>
+                                <%if (S["Client.Id"] != "" ? true : false) { %><li><a runat="server" href="/Client/Course.aspx">Self-paced courses</a></li><% } %>
+                                <li><a runat="server" href="/Client/Project.aspx">Training projects</a></li>
+                                <li><a runat="server" href="/Client/DirectCheck.aspx">Direct observation</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Group sessions<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="/Client/Session.aspx">Group sessions</a></li>
+                                <li><a runat="server" href="/Client/SessionList.aspx">System content</a></li>
+                            </ul>
+                        </li>
+                        <li><a runat="server" href="/Client/Report.aspx">Reports</a></li>
+                    </ul>
+                    <%} %>
+                    <ul class="nav navbar-nav" style="float: right;" >
+                        <li>
+                            <%if (IsAuthenticated()){ %>
+                            <%=S["Client.Auth"] %>
+                            <a href="/Client/Login.aspx?logout=1&link=<%=S["Client.Link"] %>">Logout</a>
+                            <%}else{ %>
+                            <a href="/Client/Login.aspx">Login</a>
+                            <%} %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - FCS</p>
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EmployeeAjax.aspx.cs" Inherits="FSC.Common.EmployeeAjax" %>

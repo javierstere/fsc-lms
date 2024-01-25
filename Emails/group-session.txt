@@ -1,0 +1,14 @@
+﻿Join #SESSION-NAME# - #LOCATION#
+
+Hi #EMPLOYEE-NAME#,
+
+You are invited to join training session #SESSION-NAME#
+This session will be held on #SESSION-DATE# in #LOCATION#
+
+You will connect at http://lms.bdfoodsafety.com/#LINK# on your mobile device, using 
+
+User: #EMPLOYEE-USER#
+Password: #PASSWORD#
+
+Greetings,
+LMS Team

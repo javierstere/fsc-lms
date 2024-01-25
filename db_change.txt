@@ -1,0 +1,21 @@
+- Added SelfPacedEnabled to Clients table
+type: Char
+nullable
+length: 1
+- Added SelfPacedEnabled to Client_Save stored procedure
+- Added new SP Course_Details
+- Created new table Course
+- Added new SP Course_Save
+- Added new SP Course_List
+- Added new SP Course_Delete
+- Created a new table CourseModule
+- Added new SP CourseModule_Add
+- Created a new SP CourseModule_List
+- Created a new SP CourseModule_Delete
+- Created a new SP EmployeQuizAnswer_Save
+- Added a new table CourseNotification
+- Created a new SP CourseNotification_Add
+- Modified SP Client_Save
+- Modified Table Clients
+- Added Delay to Modules table
+- Added Delay to Module_Save stored procedure
